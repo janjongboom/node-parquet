@@ -6,3 +6,4 @@ test/test.parquet
 test/t1.parquet
 .DS_Store
 .*.swp
+.nyc_output/

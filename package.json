@@ -1,11 +1,11 @@
 {
   "name": "edge-impulse-parquet",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Parquet is a columnar storage format",
   "main": "index.js",
   "scripts": {
-    "preinstall": "./build_parquet-cpp.sh",
-    "install": "node-gyp rebuild",
+    "prebuild": "./build_parquet-cpp.sh",
+    "build": "./build_parquet-cpp.sh && node-gyp rebuild",
     "postinstall": "[ _$NODE_ENV = _production ] && rm -rf build_deps || true",
     "clean": "rm -rf build_deps",
     "test": "tap test/*.js"

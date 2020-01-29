@@ -33,7 +33,7 @@ The standard way of building and installing, provided that above
 depencies are met, is simply to run:
 
 ```shell
-npm install
+npm build
 ```
 
 From 0.2.4 version, a command line tool called `parquet` is provided.
@@ -241,6 +241,25 @@ writer.write([
 - neat commmand line tool missing (one provided since 0.2.4)
 
 Plan is to improve this over time. Contributions are welcome.
+
+## Building native extensions
+
+From a macOS machine:
+
+**macOS**
+
+```
+$ npm install
+$ mkdir -p release/mac/
+$ cp build/Release/parquet.node release/mac/parquet.node
+```
+
+**Linux**
+
+```
+$ docker built -t node-parquet .
+$ docker run --rm -v $PWD/release/linux:/root/shared/ node-parquet
+```
 
 ## License
 

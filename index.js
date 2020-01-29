@@ -2,7 +2,25 @@
 
 'use strict';
 
-const parquet = require('./build/Release/parquet.node');
+const fs = require('fs');
+const Path = require('path');
+
+let parquet;
+
+if (!process.env.PARQUET_SKIP_PREBUILT && fs.existsSync(Path.join(__dirname, 'build', 'Release', 'parquet.node'))) {
+  parquet = require('./build/Release/parquet.node');
+}
+else {
+  if (process.platform === 'darwin') {
+    parquet = require('./release/mac/parquet.node');
+  }
+  else if (process.platform === 'linux') {
+    parquet = require('./release/linux/parquet.node');
+  }
+  else {
+    throw new Error('No pre-built binaries for platform "' + process.platform + '"');
+  }
+}
 
 module.exports = parquet;
 
