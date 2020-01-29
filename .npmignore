@@ -1,0 +1,14 @@
+binding.gyp
+build_deps/
+.travis.yml
+deps/
+test/
+*.tgz
+.nyc_output/
+src/*
+build/
+examples/
+Dockerfile
+.dockerignore
+.gitmodules
+build_parquet-cpp.sh

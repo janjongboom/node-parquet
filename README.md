@@ -246,20 +246,12 @@ Plan is to improve this over time. Contributions are welcome.
 
 From a macOS machine:
 
-**macOS**
-
 ```
-$ npm install
-$ mkdir -p release/mac/
-$ cp build/Release/parquet.node release/mac/parquet.node
+$ sh build-mac.sh
+$ sh build-linux-docker.sh
 ```
 
-**Linux**
-
-```
-$ docker built -t node-parquet .
-$ docker run --rm -v $PWD/release/linux:/root/shared/ node-parquet
-```
+This creates the `release/linux` and `release/mac` folders.
 
 ## License
 
