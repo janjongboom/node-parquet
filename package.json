@@ -1,6 +1,6 @@
 {
-  "name": "node-parquet",
-  "version": "0.2.7",
+  "name": "edge-impulse-parquet",
+  "version": "1.0.0",
   "description": "Parquet is a columnar storage format",
   "main": "index.js",
   "scripts": {
@@ -13,9 +13,9 @@
   "bin": {
     "parquet": "./bin/parquet.js"
   },
-  "repository": "skale-me/node-parquet",
+  "repository": "https://github.com/janjongboom/node-parquet",
   "bugs": {
-    "url": "https://github.com/skale-me/node-parquet/issues"
+    "url": "https://github.com/janjongboom/node-parquet/issues"
   },
   "keywords": [
     "big data",
@@ -29,9 +29,8 @@
     "hexdump-nodejs": "^0.1.0",
     "minimist": "^1.2.0",
     "nan": "^2.14.0",
+    "tap": "^14.10.6",
     "varint": "^5.0.0"
   },
-  "devDependencies": {
-    "tap": "^11.1.4"
-  }
+  "devDependencies": {}
 }
