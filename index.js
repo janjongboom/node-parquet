@@ -15,7 +15,23 @@ else {
     parquet = require('./release/mac/parquet.node');
   }
   else if (process.platform === 'linux') {
-    parquet = require('./release/linux/parquet.node');
+    try {
+      parquet = require('./release/linux/parquet.node');
+    }
+    catch (ex) {
+      if (ex.message && ex.message.indexOf('libboost_regex.so') > -1) {
+        console.error('ERR: edge-impulse-parquet on Linux requires libboost_regex v1.62.0.');
+        console.error('Install via (for example):')
+        console.error('');
+        console.error('wget https://sourceforge.net/projects/boost/files/boost/1.62.0/boost_1_62_0.tar.gz');
+        console.error('tar -xzf boost_1_62_0.tar.gz');
+        console.error('cd boost_1_62_0');
+        console.error('./boostrap.sh --with-libraries=atomic,date_time,exception,filesystem,iostreams,locale,program_options,regex,signals,system,test,thread,timer,log');
+        console.error('./b2');
+        console.error('');
+      }
+      throw ex;
+    }
   }
   else {
     throw new Error('No pre-built binaries for platform "' + process.platform + '"');
