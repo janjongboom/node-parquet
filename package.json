@@ -29,7 +29,6 @@
     "hexdump-nodejs": "^0.1.0",
     "minimist": "^1.2.0",
     "nan": "^2.14.0",
-    "tap": "^14.10.6",
     "varint": "^5.0.0"
   },
   "devDependencies": {}
