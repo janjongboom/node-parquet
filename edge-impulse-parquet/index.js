@@ -8,15 +8,15 @@ const Path = require('path');
 let parquet;
 
 if (!process.env.PARQUET_SKIP_PREBUILT && fs.existsSync(Path.join(__dirname, 'build', 'Release', 'parquet.node'))) {
-  parquet = require('./build/Release/parquet.node');
+  parquet = require('../build/Release/parquet.node');
 }
 else {
   if (process.platform === 'darwin') {
-    parquet = require('./release/mac/parquet.node');
+    parquet = require('../release/mac/parquet.node');
   }
   else if (process.platform === 'linux') {
     try {
-      parquet = require('./release/linux/parquet.node');
+      parquet = require('../release/linux/parquet.node');
     }
     catch (ex) {
       if (ex.message && ex.message.indexOf('libboost_regex.so') > -1) {

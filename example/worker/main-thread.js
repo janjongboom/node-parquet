@@ -19,7 +19,7 @@ worker.on('online', async () => {
 
     function waitForRowsOK() {
         return new Promise((resolve, reject) => {
-            let to = setTimeout(reject, 3000);
+            let to = setTimeout(() => reject('Worker timed out when writing rows (max. 3000 ms.)'), 3000);
 
             const onMessage = msg => {
                 if (msg.type === 'rows-ok') {

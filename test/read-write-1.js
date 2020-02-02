@@ -2,8 +2,7 @@
 
 // Modified from original script by @rafiton
 
-var t = require('tap');
-var parquet = require('../index.js');
+var parquet = require('..');
 
 var schema = {
     small_int: {type: 'int32'},
@@ -18,16 +17,20 @@ var data = [
     [ 4, 1223, 'hello world 3']
 ];
 
-var file = __dirname + '/test.parquet';
-var writer = new parquet.ParquetWriter(file, schema);
-var nbwritten = writer.write(data);
-t.equal(nbwritten, data.length, 'write: correct number of written rows');
-writer.close();
+export default (t) => {
+    t.test('read-write-1', t => {
+        var file = __dirname + '/test.parquet';
+        var writer = new parquet.ParquetWriter(file, schema);
+        var nbwritten = writer.write(data);
+        t.equal(nbwritten, data.length, 'write: correct number of written rows');
+        writer.close();
 
-var reader = new parquet.ParquetReader(file);
-var info = reader.info();
-t.equal(info.rows, data.length, 'read: correct number of rows in schema');
-t.equal(info.columns, data[0].length, 'read: correct number of columns in schema');
+        var reader = new parquet.ParquetReader(file);
+        var info = reader.info();
+        t.equal(info.rows, data.length, 'read: correct number of rows in schema');
+        t.equal(info.columns, data[0].length, 'read: correct number of columns in schema');
 
-var dataread = reader.rows(info.rows);
-t.equal(JSON.stringify(dataread), JSON.stringify(data), 'read: data read identical to original data');
+        var dataread = reader.rows(info.rows);
+        t.equal(JSON.stringify(dataread), JSON.stringify(data), 'read: data read identical to original data');
+    });
+};

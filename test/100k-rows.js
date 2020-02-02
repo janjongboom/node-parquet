@@ -1,7 +1,6 @@
 #!/usr/bin/env node
 
-var t = require('tap');
-var parquet = require('../index.js');
+var parquet = require('..');
 
 var schema = {
     timestamp: {type: 'timestamp'},
@@ -32,5 +31,10 @@ console.timeEnd('finalizing');
 
 var reader = new parquet.ParquetReader(file);
 var info = reader.info();
-t.equal(info.rows, 100000, 'read: correct number of rows in schema');
-t.equal(info.columns, 3, 'read: correct number of columns in schema');
+
+export default (t) => {
+    t.test('100k-rows', t => {
+        t.equal(info.rows, 100000, 'read: correct number of rows in schema');
+        t.equal(info.columns, 3, 'read: correct number of columns in schema');
+    });
+};
