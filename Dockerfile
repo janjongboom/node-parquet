@@ -7,9 +7,6 @@ RUN apt update && \
     apt install -y zip xxd apt-transport-https ca-certificates curl gnupg2 software-properties-common \
                    cmake libboost-dev libboost-all-dev libbison-dev flex g++-7
 
-COPY package*.json ./
-
-RUN npm install
 
 COPY .git ./.git
 COPY .gitmodules ./
@@ -17,7 +14,7 @@ RUN git submodule update --init --recursive
 
 COPY build_parquet-cpp.sh ./
 
-RUN npm run prebuild-source
+RUN sh ./build_parquet-cpp.sh
 
 RUN mkdir -p release/linux && \
     cp ./build_deps/parquet-cpp/release/libparquet.a release/linux/ && \
@@ -30,6 +27,8 @@ RUN mkdir -p release/linux && \
 
 COPY . ./
 
+COPY package*.json ./
+RUN npm install
 RUN npm run build-source
 
 CMD cp release/linux/* /root/shared/ && cp build/Release/parquet.node /root/shared/parquet.node

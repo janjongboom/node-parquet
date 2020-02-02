@@ -10,4 +10,6 @@ NAN_MODULE_INIT(Init) {
   ParquetWriter::Init(target);
 }
 
-NODE_MODULE(parquet, Init)
+NODE_MODULE_INIT() {
+    Init(exports);
+}
