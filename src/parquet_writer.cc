@@ -109,8 +109,8 @@ ParquetWriter::ParquetWriter(const Nan::FunctionCallbackInfo<Value>& info) : pw_
     Nan::ThrowTypeError("second argument is not an object");
     return;
   }
-  String::Utf8Value param1(v8::Isolate::GetCurrent(), info[0]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
-  String::Utf8Value param3(v8::Isolate::GetCurrent(), info[2]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
+  String::Utf8Value param1(info.GetIsolate(), info[0]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
+  String::Utf8Value param3(info.GetIsolate(), info[2]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
   Local<Object> param2 = Local<Object>::Cast(info[1]);
   std::shared_ptr<GroupNode> schema = std::static_pointer_cast<GroupNode>(SetupSchema("schema", Repetition::REQUIRED, param2));
   arrow::Status status = arrow::io::FileOutputStream::Open(std::string(*param1), &fw_);

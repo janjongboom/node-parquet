@@ -1,6 +1,6 @@
 {
   "name": "edge-impulse-parquet",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Parquet is a columnar storage format",
   "main": "edge-impulse-parquet/index.js",
   "scripts": {

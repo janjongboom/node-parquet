@@ -31,7 +31,7 @@ ParquetReader::ParquetReader(const Nan::FunctionCallbackInfo<Value>& info) : par
     Nan::ThrowTypeError("wrong argument");
     return;
   }
-  String::Utf8Value param1(v8::Isolate::GetCurrent(), info[0]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
+  String::Utf8Value param1(info.GetIsolate(), info[0]->ToString(Nan::GetCurrentContext()).FromMaybe(v8::Local<v8::String>()));
   std::string from = std::string(*param1);
 
   try {
