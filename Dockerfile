@@ -8,9 +8,7 @@ RUN apt update && \
                    cmake libboost-dev libboost-all-dev libbison-dev flex g++-7
 
 
-COPY .git ./.git
-COPY .gitmodules ./
-RUN git submodule update --init --recursive
+RUN mkdir -p parquet-cpp && git clone https://github.com/apache/parquet-cpp deps/parquet-cpp && cd deps/parquet-cpp && git checkout apache-parquet-cpp-1.4.0-rc1
 
 COPY build_parquet-cpp.sh ./
 
