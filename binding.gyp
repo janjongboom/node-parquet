@@ -12,8 +12,8 @@
       "build_deps/parquet-cpp/release/include",
       "<!(node -e \"require('nan')\")"
     ],
-    'cflags!': [ '-fno-exceptions', '-static', '-fPIC' ],
-    'cflags_cc!': [ '-fno-exceptions', '-static', '-fPIC' ],
+    'cflags!': [ '-fno-exceptions' ],
+    'cflags_cc!': [ '-fno-exceptions' ],
     'conditions': [
       ['OS=="mac"', {
       'xcode_settings': {

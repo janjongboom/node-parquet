@@ -21,4 +21,4 @@ cmake -DPARQUET_BUILD_TESTS=OFF \
   -DPARQUET_ARROW_LINKAGE="static" \
   -DCMAKE_BUILD_TYPE=Release \
   ../../deps/parquet-cpp
-make
+make CC=clang-7 CXX=clang++-7
