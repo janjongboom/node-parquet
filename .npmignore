@@ -12,3 +12,5 @@ Dockerfile
 .dockerignore
 .gitmodules
 build_parquet-cpp.sh
+build-linux-docker.sh
+build-mac.sh
