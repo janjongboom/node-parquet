@@ -2,7 +2,7 @@
 // This file is far from complete, but at least good enough for our simple usecase
 
 export type ParquetType = 'boolean' | 'int32' | 'int64' | 'int96' | 'float' | 'double' |
-                          'byte_array' | 'timestamp' | 'utf8';
+                          'byte_array' | 'timestamp' | 'utf8' | 'string';
 
 export type ParquetSchema = { [k: string]: { type: ParquetType, optional?: boolean } };
 export type ParquetRows = ((number | string | boolean | undefined)[] | Buffer | string)[];
